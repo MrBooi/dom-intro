@@ -15,8 +15,8 @@ var UpdateBtn = document.querySelector('.updateSettings');
 // create a variables that will keep track of all three totals.
  var smsTotalthree =0;
  var callTotalthree =0;
- var totalcall = 0;
- var totalsms =0;
+ var totalcallthree = 0;
+ var totalsmsthree =0;
  var Totalthree =0;
 
 
@@ -25,8 +25,8 @@ var UpdateBtn = document.querySelector('.updateSettings');
 // create a function called settingsBill
 
  function updateSetting(){
-   costCall.value = 0;
-   costSms.value =0;
+   // costCall.value = 0;
+   // costSms.value =0;
    var  updateCallTotal = costCall.value;
      //console.log(updateCallTotal);
    var updateSmsTotal = costSms.value;
@@ -58,20 +58,20 @@ if (radioBillBtn) {
   var callOrSms = radioBillBtn.value;
     // console.log(callOrSms);
   if(callOrSms === 'sms'){
-    totalsms +=  smsTotalthree;
+    totalsmsthree +=  smsTotalthree;
   //  console.log(SettingsCheck);
   } // end of sms brace bracket
    if (callOrSms ==='call') {
-    totalcall   += callTotalthree ;
-    console.log(totalcall);
+    totalcallthree  += callTotalthree ;
+    console.log(totalcallthree);
 
   }// end of sms brace bracket
 }
 
 // updating the vales
-callTotalSettingsElem.innerHTML = totalcall.toFixed(2);
-smsTotalSettingsElem.innerHTML  = totalsms.toFixed(2);
-var billTotalThree = totalsms + totalcall;
+callTotalSettingsElem.innerHTML = totalcallthree.toFixed(2);
+smsTotalSettingsElem.innerHTML  = totalsmsthree.toFixed(2);
+var billTotalThree = totalsmsthree + totalcallthree;
 totalSettingsElem.innerHTML  = billTotalThree.toFixed(2);
 
 if(billTotalThree >= warning && billTotalThree <danger){
