@@ -25,6 +25,8 @@ var UpdateBtn = document.querySelector('.updateSettings');
 // create a function called settingsBill
 
  function updateSetting(){
+   costCall.value = 0;
+   costSms.value =0;
    var  updateCallTotal = costCall.value;
      //console.log(updateCallTotal);
    var updateSmsTotal = costSms.value;
@@ -61,7 +63,7 @@ if (radioBillBtn) {
   } // end of sms brace bracket
    if (callOrSms ==='call') {
     totalcall   += callTotalthree ;
-  //    console.log(SettingsCheck);
+    console.log(totalcall);
 
   }// end of sms brace bracket
 }
@@ -73,12 +75,12 @@ var billTotalThree = totalsms + totalcall;
 totalSettingsElem.innerHTML  = billTotalThree.toFixed(2);
 
 if(billTotalThree >= warning && billTotalThree <danger){
-totalSettingsElem.classList.toggle("warning");
+totalSettingsElem.classList.add("warning");
 
 }
 else
 if (billTotalThree > danger) {
-    totalSettingsElem.classList.toggle("danger");
+    totalSettingsElem.classList.add("danger");
   document.getElementById("Addtotal").disabled = true;
   //document.getElementsByClassName('.addtotal').disabled=true;
 }

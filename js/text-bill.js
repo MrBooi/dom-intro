@@ -19,12 +19,21 @@ function textBillTotal(){
 
 
     // update the correct total
-    if (billTypeEntered === "ms"){
+    if (billTypeEntered === "call"){
         callsTotal += 2.75;
     }
     else if (billTypeEntered ==="sms"){
         smsTotal += 0.75;
     }
+
+   if (billTypeEntered==="") {
+
+    callsTotal = 0;
+
+    smsTotal = 0;
+    
+   }
+
 
     //update the totals that is displayed on the screen.
     callsTotalElem.innerHTML =  callsTotal.toFixed(2) ;
