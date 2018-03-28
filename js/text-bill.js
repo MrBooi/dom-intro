@@ -12,6 +12,17 @@ var addToBillBtn = document.querySelector('.addToBillBtn');
 var callsTotal = 0;
 var smsTotal = 0;
 
+function calcTestbill(){
+
+
+
+}
+
+
+
+
+
+
 
 function textBillTotal(){
     // get the value entered in the billType textfield
@@ -31,7 +42,7 @@ function textBillTotal(){
     callsTotal = 0;
 
     smsTotal = 0;
-    
+
    }
 
 
