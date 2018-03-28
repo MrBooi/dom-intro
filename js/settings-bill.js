@@ -37,17 +37,21 @@ var UpdateBtn = document.querySelector('.updateSettings');
     smsTotalthree = parseFloat(updateSmsTotal);
 
   }
+
   if(costCall !="") {
     callTotalthree = parseFloat(updateCallTotal);
   }
 
+
   if(warningLevelSetting !=""){
     warning = parseFloat(updateWarningSetting);
   }
+
   if (criticalLevelSetting !="") {
         danger = parseFloat(updateCriticalSetting);
-        console.log(danger);
+
   }
+
  }
 
 
@@ -59,12 +63,11 @@ if (radioBillBtn) {
     // console.log(callOrSms);
   if(callOrSms === 'sms'){
     totalsmsthree +=  smsTotalthree;
-  //  console.log(SettingsCheck);
+  console.log(totalsmsthree);
   } // end of sms brace bracket
    if (callOrSms ==='call') {
     totalcallthree  += callTotalthree ;
-    console.log(totalcallthree);
-
+    // console.log(totalcallthree);
   }// end of sms brace bracket
 }
 
