@@ -31,7 +31,7 @@ var priceTotal =0;
   priceTotal = priceSms+priceCall;
 
 
-return priceTotal.toFixed(2);
+return priceTotal;
 
 }
 
@@ -39,7 +39,7 @@ return priceTotal.toFixed(2);
 function calculateBtnClicked(){
     var billString = billStringElement.value;
     //round to two decimals
-    var roundedBillTotal = calculateBill(billString);
+    var roundedBillTotal = calculateBill(billString).toFixed(2);
 
     billTotalElement.innerHTML = roundedBillTotal;
 
@@ -57,6 +57,11 @@ function calculateBtnClicked(){
 //link the function to a click event on the calculate button
 calculateBtn.addEventListener('click', calculateBill);
 calculateBtn.addEventListener('click', calculateBtnClicked);
+
+
+
+
+
 
 
 

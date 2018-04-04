@@ -1,5 +1,3 @@
-//var billTypeSet = document.querySelector('.billItemTypeWithSettings');
-// get refences to all the settings fields
 var costCall = document.querySelector('.callCostSetting');
 var costSms = document.querySelector('.smsCostSetting');
 var callTotalSettingsElem =document.querySelector('.callTotalSettings');
