@@ -11,7 +11,7 @@ var buttonAdd = document.querySelector('.addtotal');
 var UpdateBtn = document.querySelector('.updateSettings');
 // create a variables that will keep track of all the settings
 // factory function
-function updateSetting() {
+function UpdateBillWithSettings() {
   var smsCost = 0;
   var callCost = 0;
   var totalCall = 0;
@@ -85,35 +85,35 @@ function updateSetting() {
 
   return {
     calc: Calculate,
-    callcost: setCallCost,
-    smscost: setSmsCost,
-    setwaring: setWarningLevel,
-    setcritical: setCriticalLevel,
+    callCost: setCallCost,
+    smsCost: setSmsCost,
+    setWarning: setWarningLevel,
+    setCritical: setCriticalLevel,
     total: billTotal,
     callTotal: getCallTotal,
     smsTotal: getSmsTotal,
-    getwarning: getWarningLevel,
-    getcritical: getCriticalLevel,
+    getWarning: getWarningLevel,
+    getCritical: getCriticalLevel,
     check: changeColor
   }
 }
 
-var update = updateSetting();
+var update = UpdateBillWithSettings();
 
-function updateSettingClicked() {
   var newSmsValue = costSmsSetting.value;
-  update.smscost(newSmsValue);
+  update.smsCost(newSmsValue);
   var newCallValue = costCallSetting.value;
-  update.callcost(newCallValue);
+  update.callCost(newCallValue);
   var warningValue = warningLevelSetting.value;
-  update.setwaring(warningValue);
+  update.setWarning(warningValue);
   var criticalValue = criticalLevelSetting.value;
-  update.setcritical(criticalValue);
+  update.setCritical(criticalValue);
+  function updateSettingClicked() {
 }
 
-var warningcheck = update.getwarning();
+var warningcheck = update.getWarning();
 
-var criticalcheck = update.getcritical();
+var criticalcheck = update.getCritical();
 console.log(criticalcheck);
 
 function RadioTotal() {
@@ -124,8 +124,8 @@ function RadioTotal() {
   }
   smsTotalSettingsElem.innerHTML = update.smsTotal();
   callTotalSettingsElem.innerHTML = update.callTotal();
-  var totalbill = update.total();
-  totalSettingsElem.innerHTML = totalbill;
+  var totalBill = update.total();
+  totalSettingsElem.innerHTML = totalBill;
   var color = update.check();
 
   if (color === "warning") {

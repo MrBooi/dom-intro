@@ -48,7 +48,7 @@ var  billTotal = function(){
    return (billtext['sms']+billtext['call']).toFixed(2);
 }
 
-  var checkbill = function(typeofBill) {
+  var checkBill = function(typeofBill) {
     return {
       sms: billtext['sms'],
       call: billtext['call']
@@ -59,10 +59,10 @@ var  billTotal = function(){
 
   return {
     calc: calcBill,
-    check: checkbill,
+    check: checkBill,
     total : billTotal,
-  smstotal :smsTotal,
-  calltotal:CallTotal
+  smsTotal :smsTotal,
+  callTotal:CallTotal
 
   }
 }

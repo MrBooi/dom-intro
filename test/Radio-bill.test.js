@@ -8,8 +8,8 @@ describe('The Radio-bill function', function() {
       radiobill.calc('call');
 
 
-      assert.equal(radiobill.calltotal(), 8.25);
-      assert.equal(radiobill.smstotal(), 0.00);
+      assert.equal(radiobill.callTotal(), 8.25);
+      assert.equal(radiobill.smsTotal(), 0.00);
       assert.equal(radiobill.total(), 8.25);
 
     });
@@ -25,8 +25,8 @@ describe('The Radio-bill function', function() {
 
 
 
-      assert.equal(radiobill.calltotal(), 2.75);
-      assert.equal(radiobill.smstotal(), 1.50);
+      assert.equal(radiobill.callTotal(), 2.75);
+      assert.equal(radiobill.smsTotal(), 1.50);
       assert.equal(radiobill.total(), 4.25);
 
     });
@@ -42,8 +42,8 @@ describe('The Radio-bill function', function() {
 
 
 
-      assert.equal(radiobill.calltotal(), 5.5);
-      assert.equal(radiobill.smstotal(), 0.75);
+      assert.equal(radiobill.callTotal(), 5.5);
+      assert.equal(radiobill.smsTotal(), 0.75);
       assert.equal(radiobill.total(), 6.25);
 
     });

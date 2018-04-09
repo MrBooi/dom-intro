@@ -10,8 +10,8 @@ describe('The text-bill function', function() {
 
 
 
-      assert.equal(textbill.calltotal(), 5.5);
-      assert.equal(textbill.smstotal(), 0.75);
+      assert.equal(textbill.callTotal(), 5.5);
+      assert.equal(textbill.smsTotal(), 0.75);
       assert.equal(textbill.total(), 6.25);
 
     });
@@ -28,8 +28,8 @@ describe('The text-bill function', function() {
 
 
 
-      assert.equal(textbill.calltotal(), 0.00);
-      assert.equal(textbill.smstotal(), 2.25);
+      assert.equal(textbill.callTotal(), 0.00);
+      assert.equal(textbill.smsTotal(), 2.25);
       assert.equal(textbill.total(), 2.25);
 
     });
@@ -45,8 +45,8 @@ describe('The text-bill function', function() {
 
 
 
-      assert.equal(textbill.calltotal(), 0.00);
-      assert.equal(textbill.smstotal(), 0.00);
+      assert.equal(textbill.callTotal(), 0.00);
+      assert.equal(textbill.smsTotal(), 0.00);
       assert.equal(textbill.total(), 0.00);
 
     });
