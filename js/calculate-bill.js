@@ -20,6 +20,11 @@ function calculateBill(billString) {
       priceCall += 2.75;
     }
   }
+
+   if(foundBill === ""){
+    priceSms += 0;
+    priceCall += 0;
+   }
   priceTotal = priceSms + priceCall;
 
   return priceTotal.toFixed(2);
@@ -38,6 +43,9 @@ function calculateBtnClicked() {
   }
 
 }
+
+
+ 
 
 
 calculateBtn.addEventListener('click', calculateBtnClicked);
