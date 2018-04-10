@@ -21,18 +21,13 @@ function UpdateBillWithSettings() {
   var total = 0;
   // setters
   var setCallCost = function(value) {
-    callCost = parseFloat(value);
-    console.log("callCost " + callCost);
+      callCost = parseFloat(value);
     return callCost.toFixed(2);
   }
-
-
   var setSmsCost = function(value) {
     smsCost = parseFloat(value);
-    console.log("smsCost " + smsCost);
     return smsCost.toFixed(2);
   }
-
   var setWarningLevel = function(value) {
     warning = parseFloat(value);
     return warning.toFixed(2);
@@ -100,21 +95,26 @@ function UpdateBillWithSettings() {
 
 var update = UpdateBillWithSettings();
 
-  var newSmsValue = costSmsSetting.value;
-  update.smsCost(newSmsValue);
-  var newCallValue = costCallSetting.value;
-  update.callCost(newCallValue);
-  var warningValue = warningLevelSetting.value;
-  update.setWarning(warningValue);
-  var criticalValue = criticalLevelSetting.value;
-  update.setCritical(criticalValue);
+
   function updateSettingClicked() {
+
+    var newSmsValue = costSmsSetting.value;
+    update.smsCost(newSmsValue);
+    console.log(newSmsValue);
+
+    var newCallValue = costCallSetting.value;
+    update.callCost(newCallValue);
+    console.log(newCallValue);
+    var warningValue = warningLevelSetting.value;
+    update.setWarning(warningValue);
+    var criticalValue = criticalLevelSetting.value;
+    update.setCritical(criticalValue);
 }
 
 var warningcheck = update.getWarning();
 
 var criticalcheck = update.getCritical();
-console.log(criticalcheck);
+
 
 function RadioTotal() {
   var settingsRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
@@ -122,6 +122,7 @@ function RadioTotal() {
     var billType = settingsRadioBtn.value.trim();
     update.calc(billType);
   }
+  console.log(update.smsTotal());
   smsTotalSettingsElem.innerHTML = update.smsTotal();
   callTotalSettingsElem.innerHTML = update.callTotal();
   var totalBill = update.total();
