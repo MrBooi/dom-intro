@@ -60,7 +60,7 @@ function UpdateBillWithSettings() {
 
   var changeColor = function() {
     var Color = "";
-    if (total > warning && total < danger) {
+    if (total >= warning && total < danger) {
       Color = "warning";
 
     } else if (total > danger) {
@@ -109,6 +109,21 @@ var update = UpdateBillWithSettings();
     update.setWarning(warningValue);
     var criticalValue = criticalLevelSetting.value;
     update.setCritical(criticalValue);
+
+
+
+
+      if(update.total< warningValue){
+
+        totalSettingsElem.classList.remove("warning");
+      }
+      else if (update.total < criticalValue) {
+        totalSettingsElem.classList.remove("danger");
+        document.getElementById("Addtotal").disabled = false;
+      }
+      if (update.total > criticalValue) {
+        document.getElementById("Addtotal").disabled = false;
+      }
 }
 
 var warningcheck = update.getWarning();

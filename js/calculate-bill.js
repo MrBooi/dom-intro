@@ -7,6 +7,8 @@ var billStringElement = document.querySelector(".billString");
 
 
 function calculateBill(billString) {
+    billTotalElement.classList.remove("warning");
+    billTotalElement.classList.remove("danger");
   var priceSms = 0;
   var priceCall = 0;
   var priceTotal = 0;

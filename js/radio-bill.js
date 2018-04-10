@@ -7,7 +7,10 @@ var totalCostTwoElem = document.querySelector('.totalTwo');
 
 var radiobill = new TextBillTotal();
 
-function radioBillClicked() { // start of radioBill function
+function radioBillClicked() {
+   // start of radioBill function
+   billTotalElement.classList.remove("warning");
+     billTotalElement.classList.remove("danger");
   var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
   if (checkedRadioBtn) {
     var billItemType = checkedRadioBtn.value;
