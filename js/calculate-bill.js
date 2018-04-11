@@ -7,8 +7,6 @@ var billStringElement = document.querySelector(".billString");
 
 
 function calculateBill(billString) {
-    billTotalElement.classList.remove("warning");
-    billTotalElement.classList.remove("danger");
   var priceSms = 0;
   var priceCall = 0;
   var priceTotal = 0;
@@ -29,6 +27,7 @@ function calculateBill(billString) {
    }
   priceTotal = priceSms + priceCall;
 
+
   return priceTotal.toFixed(2);
 
 }
@@ -42,6 +41,14 @@ function calculateBtnClicked() {
     billTotalElement.classList.add("warning");
   } else if (roundedBillTotal >= 30.00) {
     billTotalElement.classList.add("danger");
+  }
+
+  if(roundedBillTotal< 20.00){
+  billTotalElement.classList.remove("warning");
+  billTotalElement.classList.remove("danger");
+  }
+  else if(roundedBillTotal<30) {
+    billTotalElement.classList.add("warning");
   }
 
 }

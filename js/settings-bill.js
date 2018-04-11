@@ -46,10 +46,13 @@ function UpdateBillWithSettings() {
   }
 
   var getWarningLevel = function() {
+    console.log("warning  "+ warning);
+
     return warning.toFixed(2);
   }
 
   var getCriticalLevel = function() {
+
     return danger.toFixed(2);
   }
 
@@ -61,13 +64,31 @@ function UpdateBillWithSettings() {
   var changeColor = function() {
     var Color = "";
     if (total >= warning && total < danger) {
+       // totalSettingsElem.classList.remove("danger");
       Color = "warning";
 
     } else if (total > danger) {
+
       Color = "danger";
     }
     return Color;
   }
+    var removeColor = function(){
+      var colorRemove = "";
+
+      if(total<warning){
+        colorRemove ="removeWarning";
+      }
+       else if (total <danger ) {
+        colorRemove  = "removeDanger";
+      }
+      if(total <warning && total< danger){
+        colorRemove = "WarnDanger";
+
+      }
+      console.log(colorRemove);
+      return colorRemove;
+    }
 
   // Radio button clicked
   var Calculate = function(billtext) {
@@ -89,7 +110,8 @@ function UpdateBillWithSettings() {
     smsTotal: getSmsTotal,
     getWarning: getWarningLevel,
     getCritical: getCriticalLevel,
-    check: changeColor
+    check: changeColor,
+    removecolor : removeColor
   }
 }
 
@@ -97,39 +119,39 @@ var update = UpdateBillWithSettings();
 
 
   function updateSettingClicked() {
-
     var newSmsValue = costSmsSetting.value;
     update.smsCost(newSmsValue);
-    console.log(newSmsValue);
-
     var newCallValue = costCallSetting.value;
     update.callCost(newCallValue);
-    console.log(newCallValue);
     var warningValue = warningLevelSetting.value;
     update.setWarning(warningValue);
     var criticalValue = criticalLevelSetting.value;
     update.setCritical(criticalValue);
 
-
-
-
-      if(update.total< warningValue){
-
+      // if(update.total< warningValue){
+      //   totalSettingsElem.classList.remove("warning");
+      // }else if(update.total<criticalValue){
+      //  totalSettingsElem.classList.remove("danger");
+      //  document.getElementById("Addtotal").disabled = false;
+      // }
+      var checkRemove = update.removecolor();
+      console.log(checkRemove);
+      if(checkRemove ==="removeWarning"){
         totalSettingsElem.classList.remove("warning");
+        totalSettingsElem.classList.remove("danger");
+
       }
-      else if (update.total < criticalValue) {
+      else if(checkRemove ==="removeDanger"){
         totalSettingsElem.classList.remove("danger");
         document.getElementById("Addtotal").disabled = false;
       }
-      if (update.total > criticalValue) {
+      if(checkRemove=="WarnDanger"){
+        totalSettingsElem.classList.remove("warning");
+        totalSettingsElem.classList.remove("danger");
         document.getElementById("Addtotal").disabled = false;
       }
+
 }
-
-var warningcheck = update.getWarning();
-
-var criticalcheck = update.getCritical();
-
 
 function RadioTotal() {
   var settingsRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
@@ -137,19 +159,20 @@ function RadioTotal() {
     var billType = settingsRadioBtn.value.trim();
     update.calc(billType);
   }
-  console.log(update.smsTotal());
+
   smsTotalSettingsElem.innerHTML = update.smsTotal();
   callTotalSettingsElem.innerHTML = update.callTotal();
   var totalBill = update.total();
   totalSettingsElem.innerHTML = totalBill;
   var color = update.check();
-
   if (color === "warning") {
     totalSettingsElem.classList.add("warning");
   } else if (color === "danger") {
     totalSettingsElem.classList.add("danger");
     document.getElementById("Addtotal").disabled = true;
   }
+
+
 }
 
 
