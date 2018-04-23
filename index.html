@@ -6,6 +6,25 @@
   <title></title>
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+<script type="text/x-template" class="billTemplate">
+  <tr>
+  <td>Call total</td>
+  <td>R<span class="callTotalOne">{{callTotal}}</span></td>
+</tr>
+<tr>
+  <td>SMS total</td>
+  <td>R<span class="smsTotalOne">{{smsTotal}}</span></td>
+</tr>
+<tr>
+  <td>Total</td>
+  <td class="red">R<span class="totalOne">{{billTotal}}</span></td>
+</tr>
+</script>
+
+
+
 </head>
 
 <body>
@@ -67,10 +86,13 @@
             <span class="total ">R<span class="billTotal">0.00</span> </span>
           </div>
         </div>
+
+
+
+        <!-- template  code  changes-->
       </div>
       <div class="six columns box">
         <h3>Text input bill</h3>
-
         <div class="">
           <i>Enter call or sms in the textbox. Update the appropriate total and the global total when the ADD button in pressed.</i>
         </div>
@@ -93,8 +115,8 @@
           </div>
           <div class="six columns">
             <h5>Totals</h5>
-            <table>
-              <tr>
+            <table class="displayTotal">
+              <!-- <tr>
                 <td>Call total</td>
                 <td>R<span class="callTotalOne">0.00</span></td>
               </tr>
@@ -105,7 +127,7 @@
               <tr>
                 <td>Total</td>
                 <td class="red">R<span class="totalOne">0.00</span></td>
-              </tr>
+              </tr> -->
             </table>
           </div>
         </div>
@@ -149,8 +171,8 @@
           </div>
           <div class="six columns">
             <h5>Totals</h5>
-            <table>
-              <tr>
+            <table class="radiotemplate">
+              <!-- <tr>
                 <td>Call total</td>
                 <td>R<span class="callTotalTwo">0.00</span></td>
               </tr>
@@ -161,7 +183,7 @@
               <tr>
                 <td>Total</td>
                 <td class="orange">R<span class="totalTwo">0.00</span></td>
-              </tr>
+              </tr> -->
             </table>
           </div>
         </div>

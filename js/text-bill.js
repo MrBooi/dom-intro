@@ -33,20 +33,20 @@ function TextBillTotal() {
 
 
 
-  var CallTotal = function(){
+  var CallTotal = function() {
 
-  return  billtext['call'].toFixed(2);
+    return billtext['call'].toFixed(2);
   }
 
-  var smsTotal = function(){
+  var smsTotal = function() {
 
     return billtext['sms'].toFixed(2);
   }
 
-var  billTotal = function(){
+  var billTotal = function() {
 
-   return (billtext['sms']+billtext['call']).toFixed(2);
-}
+    return (billtext['sms'] + billtext['call']).toFixed(2);
+  }
 
   var checkBill = function(typeofBill) {
     return {
@@ -60,9 +60,9 @@ var  billTotal = function(){
   return {
     calc: calcBill,
     check: checkBill,
-    total : billTotal,
-  smsTotal :smsTotal,
-  callTotal:CallTotal
+    total: billTotal,
+    smsTotal: smsTotal,
+    callTotal: CallTotal
 
   }
 }
@@ -97,3 +97,25 @@ var textbillClicked = function() {
 
 
 addToBillBtn.addEventListener('click', textbillClicked);
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  // get a reference to the template script tag
+  var templateSource = document.querySelector(".billTemplate").innerHTML;
+
+  // compile the template
+  var textBillTemplate = Handlebars.compile(templateSource);
+
+  var BillDataElem = document.querySelector(".displayTotal");
+
+  var userDataHTML = textBillTemplate({
+    callTotal: '2.75',
+    smsTotal: '0.75',
+    billTotal: '3.50',
+
+  });
+  BillDataElem.innerHTML = userDataHTML;
+
+
+});

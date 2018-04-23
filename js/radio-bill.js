@@ -36,3 +36,26 @@ function radioBillClicked() {
 
 }
 radioBillAddBtn.addEventListener('click', radioBillClicked);
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function(){
+   // get a reference to the template script tag
+ var templateSource = document.querySelector(".billTemplate").innerHTML;
+ // compile the template
+var RadioBillTemplate = Handlebars.compile(templateSource);
+
+var RadioDataElem = document.querySelector(".radiotemplate");
+
+var userDataHTML = RadioBillTemplate({
+       callTotal : '5.75',
+       smsTotal : '2.75',
+       billTotal : '10.50',
+
+   });
+   RadioDataElem.innerHTML = userDataHTML;
+
+
+});
