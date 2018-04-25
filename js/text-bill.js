@@ -19,7 +19,7 @@ function TextBillTotal() {
 
   var smsCost = 0;
   var callCost = 0;
-  var totalBill = 0;
+
 
   function calcBill(typeofBill) {
     if (typeofBill === 'sms') {
@@ -41,7 +41,7 @@ function TextBillTotal() {
 
   var billTotal = function() {
 
-    return (callCost + smsCost).toFixed(2);
+    return parseFloat(callCost + smsCost).toFixed(2);
   }
 
   function totalCostAlert() {
