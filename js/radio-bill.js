@@ -7,15 +7,11 @@ var totalCostTwoElem = document.querySelector('.totalTwo');
 
 
 // get a reference to the template script tag
-var templateSource = document.querySelector(".billTemplate").innerHTML;
+// var templateSource = document.querySelector(".billTemplate").innerHTML;
 // compile the template
 var RadioBillTemplate = Handlebars.compile(templateSource);
 
 var RadioDataElem = document.querySelector(".radioBillTotals");
-
-
-
-
 
 var radiobill = new TextBillTotal();
 
