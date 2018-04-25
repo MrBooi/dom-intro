@@ -9,113 +9,87 @@ var totalCostElem = document.querySelector('.totalOne');
 //get a reference to the add button
 var addToBillBtn = document.querySelector('.addToBillBtn');
 
+// get a reference to the template script tag
+var templateSource = document.querySelector(".billTemplate").innerHTML;
+// compile the template
+var textBillTemplate = Handlebars.compile(templateSource);
+var BillDataElem = document.querySelector(".textBillTotals");
+
 function TextBillTotal() {
-  var billtext = {
-    sms: 0,
-    call: 0,
-    //totalbill:0
-  };
+
+  var smsCost = 0;
+  var callCost = 0;
+  var totalBill = 0;
 
   function calcBill(typeofBill) {
     if (typeofBill === 'sms') {
-      // it will add 0.75 only if typeofBill equal to sms
-      billtext['sms'] += 0.75;
+      smsCost += 0.75;
     } else if (typeofBill === 'call') {
       // it will add 2.75 only if typeofBill equal to call
-      billtext['call'] += 2.75;
-    }
-    if (typeofBill === '') {
-      // if typeofBill equal to blank the will add zero to both sms and call
-      billtext['sms'] += 0;
-      billtext['call'] += 0;
+      callCost += 2.75;
     }
   }
 
-
-
   var CallTotal = function() {
-
-    return billtext['call'].toFixed(2);
+    return parseFloat(callCost).toFixed(2);
   }
 
   var smsTotal = function() {
 
-    return billtext['sms'].toFixed(2);
+    return parseFloat(smsCost).toFixed(2);
   }
 
   var billTotal = function() {
 
-    return (billtext['sms'] + billtext['call']).toFixed(2);
+    return (callCost + smsCost).toFixed(2);
   }
 
-  var checkBill = function(typeofBill) {
-    return {
-      sms: billtext['sms'],
-      call: billtext['call']
+  function totalCostAlert() {
+
+    if (billTotal() > 30.00 && billTotal() <= 50.00) {
+      return "warning";
+    } else if (billTotal() > 50.00) {
+      return "danger";
     }
 
 
   }
-
   return {
     calc: calcBill,
-    check: checkBill,
-    total: billTotal,
     smsTotal: smsTotal,
-    callTotal: CallTotal
-
+    callTotal: CallTotal,
+    total: billTotal,
+    totalAlert: totalCostAlert
   }
 }
-
-
-
 
 
 var textbill = TextBillTotal();
 
-
-
 // DOM function that will be displaying the output
 var textbillClicked = function() {
-
   var billTypeEntered = billTypeText.value.trim();
-  // entered string into calcbill function
   textbill.calc(billTypeEntered);
-  //passing enteredstring
-  var totalbill = textbill.check(billTypeEntered);
-  callsTotalElem.innerHTML = (totalbill['call']).toFixed(2);
-  smsTotalElem.innerHTML = (totalbill['sms']).toFixed(2);
-  var checkTotal = (totalbill['call'] + totalbill['sms']);
-  totalCostElem.innerHTML = checkTotal.toFixed(2);
-  if (checkTotal >= 30 && checkTotal < 50) {
-    //  adding the danger class will make the text red
-    totalCostElem.classList.add("warning");
-  } else if (checkTotal >= 50) {
-    totalCostElem.classList.add("danger");
-  }
+
+  var textData = textBillTemplate({
+    billTotalClass: 'totalOne ' + textbill.totalAlert(),
+    callTotal: textbill.callTotal(),
+    smsTotal: textbill.smsTotal(),
+    billTotal: textbill.total()
+  });
+  BillDataElem.innerHTML = textData;
 }
 
-
 addToBillBtn.addEventListener('click', textbillClicked);
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
-  // get a reference to the template script tag
-  var templateSource = document.querySelector(".billTemplate").innerHTML;
 
-  // compile the template
-  var textBillTemplate = Handlebars.compile(templateSource);
-
-  var BillDataElem = document.querySelector(".displayTotal");
-
-  var userDataHTML = textBillTemplate({
-    callTotal: '2.75',
-    smsTotal: '0.75',
-    billTotal: '3.50',
-
+  var textData = textBillTemplate({
+    callTotalClass: 'callTotalOne',
+    smsTotalClass: 'smsTotalOne',
+    billTotalClass: 'totalOne',
+    callTotal: '0.00',
+    smsTotal: '0.00',
+    billTotal: '0.00'
   });
-  BillDataElem.innerHTML = userDataHTML;
-
-
+  BillDataElem.innerHTML = textData;
 });
